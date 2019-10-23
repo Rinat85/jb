@@ -1,26 +1,68 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import styled from 'styled-components';
+import { GlobalStyle } from './theme/globalStyle';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import Header from './components/Header';
+import StickyMenus from './components/StickyMenus';
+import MainSectionBottom from './components/MainSectionBottom';
+import Migration from './Migration';
+import Tourism from './Tourism';
+import MainModal from './components/MainModal';
+
+const AppWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+`;
+
+class Home extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            show: false
+        };
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+
+    handleClick() {
+        this.setState({
+            show: !this.state.show
+        });
+    }
+
+    render() {
+        return (
+            <AppWrapper>
+                <Header text="получить консультацию" dataType="main" handleClick={this.handleClick} />
+                <Header text="узнать подробнее" dataType="migration" contentType="migration" NavDisplay="none" linkTo="/migration" />
+                <MainSectionBottom text="узнать подробнее" linkTo="/tourism" />
+                <StickyMenus />
+                <MainModal handleClick={this.handleClick} show={this.state.show} />
+                <div id="bottom"></div>
+            </AppWrapper>
+        )
+    }
+};
+
+
+const App = () => {
+    return (
+        <Router>
+            <>
+                <GlobalStyle whiteColor />
+                <Switch>
+                    <Route exact path={process.env.PUBLIC_URL + "/"} component={Home} />
+                    <Route path={process.env.PUBLIC_URL + "/migration"} component={Migration} />
+                    <Route path={process.env.PUBLIC_URL + "/tourism"} component={Tourism} />
+                    <Route component={Home} />
+                </Switch>
+            </>
+        </Router>
+    )
+};
 
 export default App;
