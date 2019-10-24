@@ -125,8 +125,8 @@ class MainModal extends React.Component {
                         <h4>Не нашли что искали?</h4>
                         <p>оставьте заявку мы с вами свяжемся</p>
                         <StyledModalForm>
-                            <input type="text" name="name" placeholder="Имя" />
-                            <input type="text" name="phone" placeholder="Номер телефона" />
+                            <input type="text" name="name" placeholder="Имя" required />
+                            <input type="text" name="phone" placeholder="Номер телефона" required />
                             <button type="submit">Отправить</button>
                         </StyledModalForm>
                     </StyledModalWrap>

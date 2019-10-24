@@ -95,11 +95,11 @@ const ContactFormSection = () => {
                 </ScrollAnimation>
                 <ScrollAnimation animateIn="fadeIn" duration={2} delay={300} animateOnce={true}>
                     <StyledContactForm>
-                        <STyledContactInput type="text" placeholder="Ваше имя" />
-                        <STyledContactInput type="text" placeholder="Желаемая работа" />
-                        <STyledContactInput type="text" placeholder="Страна" />
-                        <STyledContactInput type="text" placeholder="Ваш телефон" />
-                        <MainButton type="submit" margin="50px auto 0 auto" text="Измените жизнь" />
+                        <STyledContactInput type="text" placeholder="Ваше имя" required />
+                        <STyledContactInput type="text" placeholder="Желаемая работа" required />
+                        <STyledContactInput type="text" placeholder="Страна" required />
+                        <STyledContactInput type="text" placeholder="Ваш телефон" required />
+                        <MainButton type="submit" margin="50px auto 0 auto" text="Измените жизнь" required />
                     </StyledContactForm>
                 </ScrollAnimation>
             </Container>
