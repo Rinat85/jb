@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useReducer } from 'react';
 import styled from 'styled-components';
 import ScrollAnimation from 'react-animate-on-scroll';
 
@@ -9,6 +9,13 @@ const StyledStepperWrapper = styled.section`
     background: url(${Bg}) no-repeat center center;
     background-size: cover;
     padding: 97px 0 67px 0;
+
+    h4 {
+        font-size: 30px;
+        color: white;
+        text-align: center;
+    }
+
 `;
 
 const StyledSectionHeader = styled.h2`
@@ -190,94 +197,93 @@ const STyledContactButton = styled.button`
     }
 `;
 
-class TourismStepper extends React.Component {
+const TourismStepper = () => {
 
-    state = {
-        formActivePanel: 1,
-        tourCountry: '',
-        tourDate: '',
-        tourUsername: '',
-        tourUserphone: ''
-    };
+    const [ formActivePanel, setFormActivePanel ] = useState(1);
+    const [ userInput, setUserInput ] = useReducer(
+        (state, newState) => ({...state, ...newState}),
+        {
+            tourCountry: '',
+            tourDate: '',
+            tourUsername: '',
+            tourUserphone: ''
+        }
+    );
+    const [isSent, setIsSent] = useState(false);
+   
+    const handleNextClick = param => e => setFormActivePanel(param);
 
-    handleNextClick = (param) => (e) => {
-        this.setState({
-            formActivePanel: param
-        });
-    };
-
-    handleInputChange = (e) => {
-        const name = e.target.name;
-        const value = e.target.value;
-        this.setState({
-            [name]: value 
-        });
+    const handleInputChange = e => {
+        const { name, value } = e.target;
+        
+        setUserInput({[name]: value});
     }
 
-    handleSubmission = (e) => {
-        e.prevent.default();
-        fetch('/mail.php', {
+    const handleSubmit = e => {
+        e.preventDefault();
+        fetch('/stepper.php', {
             method: 'POST',
             headers: {
-              'Accept': 'application/json',
-              'Content-Type': 'application/json'
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                tourCountry : this.state.tourCountry,
-                tourDate : this.state.tourDate,
-                tourUsername : this.state.tourUsername,
-                tourUserphone : this.state.tourUserphone
-            })
-        }).then(res => res.json())
-        .then(data => console.log(data))
+            body: JSON.stringify({ 
+                tourCountry: userInput.tourCountry, 
+                tourDate: userInput.tourDate, 
+                tourUsername: userInput.tourUsername, 
+                tourUserphone: userInput.tourUserphone 
+            }),
+        }).then(res => res.text())
+        .then(() => setIsSent(true))
         .catch(err => console.log(err));
     };
 
-    render() {
-        return (
-            <StyledStepperWrapper>
-                <Container>
-                    <ScrollAnimation animateIn="jackInTheBox" duration={1} animateOnce={true}>
-                        <StyledSectionHeader color="white" subcolor="#a11a39">
-                            ХОТИТЕ ПОДОБРАТЬ ТУР?
-                        </StyledSectionHeader>
-                    </ScrollAnimation>
+    return (
+        <StyledStepperWrapper>
+            <Container>
+                <ScrollAnimation animateIn="jackInTheBox" duration={1} animateOnce={true}>
+                    <StyledSectionHeader color="white" subcolor="#a11a39">
+                        ХОТИТЕ ПОДОБРАТЬ ТУР?
+                    </StyledSectionHeader>
+                </ScrollAnimation>
+                {!isSent &&
+                (<>
                     <StyledStepper>
                         <ul>
-                            <StyledStep onClick={this.handleNextClick(1)} active={this.state.formActivePanel === 1}>1</StyledStep>
-                            <StyledStep onClick={this.handleNextClick(2)} active={this.state.formActivePanel === 2}>2</StyledStep>
-                            <StyledStep onClick={this.handleNextClick(3)} active={this.state.formActivePanel === 3}>3</StyledStep>
+                            <StyledStep onClick={handleNextClick(1)} active={formActivePanel === 1}>1</StyledStep>
+                            <StyledStep onClick={handleNextClick(2)} active={formActivePanel === 2}>2</StyledStep>
+                            <StyledStep onClick={handleNextClick(3)} active={formActivePanel === 3}>3</StyledStep>
                         </ul>
                     </StyledStepper>
-                    <StyledStepperForm onSubmit={this.handleSubmission}>
+                    <StyledStepperForm onSubmit={handleSubmit}>
 
-                        {this.state.formActivePanel === 1 &&
+                        {formActivePanel === 1 &&
                         (<>
                             <ScrollAnimation animateIn="slideInLeft" duration={1} animateOnce={true}>
-                                <STyledContactInput type="text" name="tourCountry" value={this.state.tourCountry} onChange={this.handleInputChange} placeholder="Выбрать страну" required />
+                                <STyledContactInput type="text" name="tourCountry" value={userInput.tourCountry} onChange={handleInputChange} placeholder="Выбрать страну" required />
                             </ScrollAnimation>
                             <ScrollAnimation animateIn="slideInRight" duration={2} animateOnce={true}>
-                                <STyledContactButton type="button" onClick={this.handleNextClick(2)}>Далее</STyledContactButton>
+                                <STyledContactButton type="button" onClick={handleNextClick(2)}>Далее</STyledContactButton>
                             </ScrollAnimation>
                         </>)}
 
-                        {this.state.formActivePanel === 2 &&
+                        {formActivePanel === 2 &&
                         (<>
                             <ScrollAnimation animateIn="slideInLeft" duration={1} animateOnce={true}>
-                                <STyledContactInput type="text" name="tourDate" value={this.state.tourDate} onChange={this.handleInputChange} placeholder="Ориентировочная дата" required />
+                                <STyledContactInput type="text" name="tourDate" value={userInput.tourDate} onChange={handleInputChange} placeholder="Ориентировочная дата" required />
                             </ScrollAnimation>
                             <ScrollAnimation animateIn="slideInRight" duration={2} animateOnce={true}>
-                                <STyledContactButton type="button" onClick={this.handleNextClick(3)}>Далее</STyledContactButton>
+                                <STyledContactButton type="button" onClick={handleNextClick(3)}>Далее</STyledContactButton>
                             </ScrollAnimation>
                         </>)}
 
-                        {this.state.formActivePanel === 3 &&
+                        {formActivePanel === 3 &&
                         (<>
                             <ScrollAnimation animateIn="slideInLeft" duration={1} animateOnce={true}>
-                                <STyledContactInput type="text" name="tourUsername" value={this.state.tourUsername} onChange={this.handleInputChange} placeholder="Имя" required />
+                                <STyledContactInput type="text" name="tourUsername" value={userInput.tourUsername} onChange={handleInputChange} placeholder="Имя" required />
                             </ScrollAnimation>
                             <ScrollAnimation animateIn="slideInLeft" duration={2} animateOnce={true}>
-                                <STyledContactInput type="text" name="tourUserphone" value={this.state.tourUserphone} onChange={this.handleInputChange} placeholder="Номер телефона" required />
+                                <STyledContactInput type="text" name="tourUserphone" value={userInput.tourUserphone} onChange={handleInputChange} placeholder="Номер телефона" required />
                             </ScrollAnimation>
                             <ScrollAnimation animateIn="slideInRight" duration={2} animateOnce={true}>
                                 <STyledContactButton type="submit" submit>Отправить</STyledContactButton>
@@ -285,10 +291,12 @@ class TourismStepper extends React.Component {
                         </>)}
 
                     </StyledStepperForm>
-                </Container>
-            </StyledStepperWrapper>
-        )
-    }
+                </>)}
+                {isSent && 
+                (<h4>Благодарим за заявку! Наши менеджеры свяжутся с вами.</h4>)}
+            </Container>
+        </StyledStepperWrapper>
+    )
 };
 
 export default TourismStepper;

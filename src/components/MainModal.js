@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import ScrollAnimation from 'react-animate-on-scroll';
 
@@ -109,31 +109,69 @@ const StyledModalForm = styled.form`
     
 `;
 
-class MainModal extends React.Component {
+const MainModal = (props) => {
 
-    state = {
-        name: '',
-        phone: ''
-    };
+    const [ name, setName ] = useState('');
+    const [ phone, setPhone ] = useState('');
+    const [isSent, setIsSent] = useState(false);
 
-    render() {
-        return (
-            <StyledOverlay show={this.props.show}>
-                <ScrollAnimation animateIn="fadeIn" animateOnce={true} duration={2} offset={0}>
-                    <StyledModalWrap>
-                        <span onClick={this.props.handleClick}>✖</span>
-                        <h4>Не нашли что искали?</h4>
-                        <p>оставьте заявку мы с вами свяжемся</p>
-                        <StyledModalForm>
-                            <input type="text" name="name" placeholder="Имя" required />
-                            <input type="text" name="phone" placeholder="Номер телефона" required />
+    const handleSubmit = e => {
+        e.preventDefault();
+        fetch('/mail.php', {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ name, phone }),
+        })
+        .then(res => res.text())
+        .then(() => setIsSent(true))
+        .catch(err => console.log(err));
+    }
+
+    return (
+        <StyledOverlay show={props.show}>
+            <ScrollAnimation 
+                animateIn="fadeIn" 
+                animateOnce={true} 
+                duration={2} 
+                offset={0}>
+                <StyledModalWrap>
+                    <span onClick={(e) => {
+                            props.handleClick();
+                            setIsSent(false);
+                        }}>✖</span>
+                    {!isSent &&
+                    (<>
+                        <h4>Заполните форму</h4>
+                        <p>мы с вами свяжемся</p>
+                        <StyledModalForm onSubmit={handleSubmit} method="POST">
+                            <input 
+                                type="text" 
+                                name="name" 
+                                placeholder="Имя"
+                                value={name}
+                                onChange={e => setName(e.target.value)} 
+                                required 
+                                />
+                            <input 
+                                type="text" 
+                                name="phone" 
+                                placeholder="Номер телефона"
+                                value={phone}
+                                onChange={e => setPhone(e.target.value)}  
+                                required 
+                                />
                             <button type="submit">Отправить</button>
                         </StyledModalForm>
-                    </StyledModalWrap>
-                </ScrollAnimation>
-            </StyledOverlay>
-        )
-    }
+                    </>)}
+                    {isSent && 
+                    (<h4>Благодарим за заявку! Наши менеджеры свяжутся с вами.</h4>)}
+                </StyledModalWrap>
+            </ScrollAnimation>
+        </StyledOverlay>
+    )
 };
 
 export default MainModal;

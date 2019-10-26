@@ -25,6 +25,12 @@ const StyledSocial = styled.ul`
     background-color: rgba(0, 0, 0, 0.4);
     }
 
+    @media screen and (max-width: 600px) {
+        top: 50%;
+        bottom: 0;
+        transform: translateY(-30%);
+    }
+
     @media screen and (max-width: 1200px) {
         bottom: 7vh;
     }  
@@ -61,6 +67,10 @@ const StyledMessage = styled.ul`
     border: 1px solid #9e1a38;
     border-radius: 50%;
     background-color: rgba(0, 0, 0, 0.4);
+
+    @media screen and (max-width: 600px) {
+        display: none;
+    }
   }
 
   @media screen and (max-width: 1200px) {

@@ -35,6 +35,14 @@ const StyledContactsWrap = styled.div`
         display: flex;
         align-items: center;
         justify-content: flex-end;
+
+        @media screen and (max-width: 600px) {
+            align-items: flex-end;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        bottom: 30px;
     }
 
 `;
@@ -90,6 +98,11 @@ const StyledAdressbar = styled(StyledPhonebar)`
 `;
 
 const StyledMailbar = styled(StyledPhonebar)`
+
+    @media screen and (max-width: 600px) {
+        display: none;
+    }
+
     ::before {
         content: url('../img/email.png');
     }
@@ -228,7 +241,7 @@ export class MapSection extends Component {
                             <SectionHeader text="Контакты" color="#333333" subcolor="#a11a39" />
                             <StyledPhonebar href="callto: +998951422242">+998 (95) 142 22 42</StyledPhonebar>
                             <StyledAdressbar href="https://www.google.ru/maps/place/iTeam+Web+Media/@41.321011,69.2604266,15z/data=!4m8!1m2!2m1!1siteam!3m4!1s0x0:0x1b2d145a90ce481c!8m2!3d41.3213358!4d69.2579681">ул. Респбуликанская оф 3</StyledAdressbar>
-                            <StyledMailbar href="mailto: group@gmail.com">group@gmail.com</StyledMailbar>
+                            <StyledMailbar href="mailto: info@jbworldcompany.com">info@jbworldcompany.com</StyledMailbar>
                         </StyledContacts>
                     </ScrollAnimation>
                 </Container>
