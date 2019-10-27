@@ -13,12 +13,13 @@ const StyledNavbar = styled.ul`
     }
 
     @media screen and (min-width: 601px) and (max-width: 900px) {
-        justify-content: flex-start;
+        justify-content: center;
         flex-direction: column;
+        text-align: center;
     }
 
     @media screen and (min-width: 901px) and (max-width: 1200px) {
-        justify-content: flex-start;
+        justify-content: center;
     }
 `;
 
@@ -36,7 +37,7 @@ const StyledNavbarItem = styled.li`
     }
 
     @media screen and (min-width: 901px) and (max-width: 1200px) {
-        padding: 28px 10px 27px 10px;
+        padding: 28px 15px 27px 0;
     }
     
 `;

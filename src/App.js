@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import styled from 'styled-components';
 import { GlobalStyle } from './theme/globalStyle';
+import { useTranslation } from 'react-i18next';
 
 import Header from './components/Header';
 import StickyMenus from './components/StickyMenus';
@@ -17,39 +18,31 @@ const AppWrapper = styled.div`
   overflow: hidden;
 `;
 
-class Home extends React.Component {
+const Home = (props) => {
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            show: false
-        };
-        this.handleClick = this.handleClick.bind(this);
+    const [ show, setShow ] = useState(false);
+    const { t } = useTranslation();
+  
+    const handleClick = () => {
+        setShow({show: !show});
     }
 
-
-    handleClick() {
-        this.setState({
-            show: !this.state.show
-        });
-    }
-
-    render() {
-        return (
-            <AppWrapper>
-                <Header text="получить консультацию" dataType="main" handleClick={this.handleClick} />
-                <Header text="узнать подробнее" dataType="migration" contentType="migration" NavDisplay="none" linkTo="/migration" />
-                <MainSectionBottom text="узнать подробнее" linkTo="/tourism" />
-                <StickyMenus />
-                <MainModal handleClick={this.handleClick} show={this.state.show} />
-                <div id="bottom"></div>
-            </AppWrapper>
-        )
-    }
+    return (
+        <AppWrapper>
+            <h1>{t("Ваш надежный партнер")}</h1>
+            <Header text="получить консультацию" dataType="main" handleClick={handleClick} />
+            <Header text="узнать подробнее" dataType="migration" contentType="migration" NavDisplay="none" linkTo="/migration" />
+            <MainSectionBottom text="узнать подробнее" linkTo="/tourism" />
+            <StickyMenus />
+            <MainModal handleClick={handleClick} show={show} />
+            <div id="bottom"></div>
+        </AppWrapper>
+    )
 };
 
 
 const App = () => {
+
     return (
         <Router>
             <>
@@ -63,6 +56,7 @@ const App = () => {
             </>
         </Router>
     )
+    
 };
 
 export default App;

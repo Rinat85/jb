@@ -6,8 +6,8 @@ import NavlangbarList from './NavlangbarList';
 const StyledNavlangbarWrap = styled.div`
     display: flex;
     justify-content: end;
-    align-items: baseline;
-    padding: 28px 0 27px 17px;
+    align-items: center;
+    padding-left: 17px;
 
     @media screen and (max-width: 600px) {
         justify-content: flex-end;
@@ -16,13 +16,13 @@ const StyledNavlangbarWrap = styled.div`
     }
 
     @media screen and (min-width: 601px) and (max-width: 900px) {
-        justify-content: flex-end;
+        justify-content: center;
         background-color: white;
         color: #2d2d2d;
     }
 
     @media screen and (min-width: 901px) and (max-width: 1200px) {
-        padding: 28px 0 27px 10px;
+        padding-left: 10px;
     }  
 `;
 

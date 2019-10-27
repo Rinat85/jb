@@ -105,7 +105,7 @@ const StyledHeaderBannerText = styled.p`
 
 const MainHeaderContent = (props) => {
 
-    const { text, handleClick } = props;
+    const { handleClick, text } = props;
 
     return (
         <StyledHeaderBanner>
