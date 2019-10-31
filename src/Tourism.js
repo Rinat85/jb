@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { useTranslation } from 'react-i18next';
 
 import { GlobalStyle } from './theme/globalStyle';
 import Header from './components/Header';
@@ -16,39 +17,31 @@ const AppWrapper = styled.div`
   overflow: hidden;
 `;
 
-class Tourism extends React.Component {
+const Tourism = () => {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      show: false
-    };
-    this.handleClick = this.handleClick.bind(this);
-  }
-  
+  const [ show, setShow ] = useState(false);
+  const { t } = useTranslation();
 
-  handleClick() {
-    this.setState({
-      show: !this.state.show
+  const handleClick = () => {
+    setShow({
+      show: !show
     });
   }
 
-  render() {
-    return (
-      <>
-          <GlobalStyle whiteColor />
-          <AppWrapper>
-              <div id="top"></div>
-              <Header handleClick={this.handleClick} text="получить консультацию" dataType="tourism" contentType="tourism" />
-              <TourismMain handleClick={this.handleClick} />
-              <Footer dataType="tourism" />
-              <StickyMenus />
-              <MainModal handleClick={this.handleClick} show={this.state.show} />
-              <div id="bottom"></div>
-          </AppWrapper>
-      </>
-    );
-  }
+  return (
+    <>
+        <GlobalStyle whiteColor />
+        <AppWrapper>
+            <div id="top"></div>
+            <Header handleClick={handleClick} text={t("получить консультацию")} dataType="tourism" contentType="tourism" />
+            <TourismMain handleClick={handleClick} />
+            <Footer dataType="tourism" />
+            <StickyMenus />
+            <MainModal handleClick={handleClick} show={show} />
+            <div id="bottom"></div>
+        </AppWrapper>
+    </>
+  );
 }
 
 export default Tourism;

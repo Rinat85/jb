@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import MainButton from './MainButton';
 import HeaderBannerLogo from '../img/header-logo.png';
+import { useTranslation } from 'react-i18next';
 
 const StyledHeaderBanner = styled.div`
     display: flex;
@@ -117,15 +118,16 @@ const StyledHeaderBannerText = styled.p`
 const MigrationHeaderContent = (props) => {
 
     const { text, linkTo, handleClick } = props;
+    const { t } = useTranslation();
 
     return (
         <StyledHeaderBanner>
             <StyledHeaderBannerLogo />
             <StyledHeaderBannerTitle>
-                Трудовая миграция
+                {t("Трудовая миграция")}
             </StyledHeaderBannerTitle>
             <StyledHeaderBannerText>
-                Трудовая миграция является одной из самой популярной и волнующей областью среди стран Средней Азии.JB WORLD COMPANY поможет решить все проблемы которые могут возникнуть во время пребывания за рубежом. Поможем получить рабочую визу в Страны Европы и США а так же найти работу. Мы обеспечим вашу гарантию в завтрашнем дне.
+                {t("текст банера главная миграция")}
             </StyledHeaderBannerText>
             <MainButton handleClick={handleClick} text={text} linkTo={linkTo} margin="0 0 197px 60px" />
         </StyledHeaderBanner>

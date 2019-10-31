@@ -29,10 +29,9 @@ const Home = (props) => {
 
     return (
         <AppWrapper>
-            <h1>{t("Ваш надежный партнер")}</h1>
-            <Header text="получить консультацию" dataType="main" handleClick={handleClick} />
-            <Header text="узнать подробнее" dataType="migration" contentType="migration" NavDisplay="none" linkTo="/migration" />
-            <MainSectionBottom text="узнать подробнее" linkTo="/tourism" />
+            <Header text={t("получить консультацию")} dataType="main" handleClick={handleClick} />
+            <Header text={t("узнать подробнее")} dataType="migration" contentType="migration" NavDisplay="none" linkTo="/migration" />
+            <MainSectionBottom text={t("узнать подробнее")} linkTo="/tourism" />
             <StickyMenus />
             <MainModal handleClick={handleClick} show={show} />
             <div id="bottom"></div>

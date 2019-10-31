@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import ScrollAnimation from 'react-animate-on-scroll';
 import Slider from "react-slick";
@@ -6,6 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlane, faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import { useTranslation } from 'react-i18next';
 
 import Container from './Container';
 import SectionHeader from './SectionHeader';
@@ -112,203 +113,205 @@ const StyledCardBottom = styled.div`
     }
 `;
 
-export default class TourismTours extends Component {
-    render() {
-        const settings = {
-            dots: false,
-            infinite: true,
-            speed: 500,
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            initialSlide: 0,
-        };
+const TourismTours = () => {
 
-        return (
-            <StyledTestimonialsSection id="tours">
-                <Container>
-                    <ScrollAnimation animateIn="fadeIn" duration={3} animateOnce={true}>
-                        <SectionHeader text="Самые выгодные и интересные туры" color="#ffffff" subcolor="#ffffff" />
-                    </ScrollAnimation>
-                    <Slider {...settings}>
-                        <div>
-                            <StyledSliderItems>
-                                <ScrollAnimation animateIn="zoomIn" duration={2} animateOnce={true}>
-                                    <StyledSliderItem>
-                                        <img src="../img/tourism-tour1.png" alt="tour1" />
-                                        <h4>Пхукет</h4>
-                                        <p>Прямые перелеты до острова</p>
-                                        <StyledCardBottom>
-                                            <p>
-                                                <FontAwesomeIcon icon={faPlane} color="#a11a39" /> индивидуальный период
-                                            </p>
-                                            <p>
-                                                <FontAwesomeIcon icon={faCalendarAlt} color="#a11a39" /> Круглый год
-                                            </p>
-                                        </StyledCardBottom>
-                                    </StyledSliderItem>
-                                </ScrollAnimation>
-                                <ScrollAnimation animateIn="zoomIn" duration={2} delay={300} animateOnce={true}>
-                                    <StyledSliderItem>
-                                        <img src="../img/tourism-tour2.png" alt="tour2" />
-                                        <h4>Мальдивы</h4>
-                                        <p>Скидка до 45%</p>
-                                        <StyledCardBottom>
-                                            <p>
-                                                <FontAwesomeIcon icon={faPlane} color="#a11a39" /> индивидуальный период
-                                            </p>
-                                            <p>
-                                                <FontAwesomeIcon icon={faCalendarAlt} color="#a11a39" /> Круглый год
-                                            </p>
-                                        </StyledCardBottom>
-                                    </StyledSliderItem>
-                                </ScrollAnimation>
-                                <ScrollAnimation animateIn="zoomIn" duration={2} delay={600} animateOnce={true}>
-                                    <StyledSliderItem>
-                                        <img src="../img/tourism-tour3.png" alt="tour3" />
-                                        <h4>Остров БОНЕО</h4>
-                                        <p>Групповые туры</p>
-                                        <StyledCardBottom>
-                                            <p>
-                                                <FontAwesomeIcon icon={faPlane} color="#a11a39" /> индивидуальный период
-                                            </p>
-                                            <p>
-                                                <FontAwesomeIcon icon={faCalendarAlt} color="#a11a39" /> Круглый год
-                                            </p>
-                                        </StyledCardBottom>
-                                    </StyledSliderItem>
-                                </ScrollAnimation>
-                                <ScrollAnimation animateIn="zoomIn" duration={2} animateOnce={true}>
-                                    <StyledSliderItem>
-                                        <img src="../img/tourism-tour4.png" alt="tour4" />
-                                        <h4>Бадрум</h4>
-                                        <p>Бесплатные ночи в бадруме</p>
-                                        <StyledCardBottom>
-                                            <p>
-                                                <FontAwesomeIcon icon={faPlane} color="#a11a39" /> индивидуальный период
-                                            </p>
-                                            <p>
-                                                <FontAwesomeIcon icon={faCalendarAlt} color="#a11a39" /> Круглый год
-                                            </p>
-                                        </StyledCardBottom>
-                                    </StyledSliderItem>
-                                </ScrollAnimation>
-                                <ScrollAnimation animateIn="zoomIn" duration={2} delay={300} animateOnce={true}>
-                                    <StyledSliderItem>
-                                        <img src="../img/tourism-tour5.png" alt="tour5" />
-                                        <h4>Малазийские мальдивы</h4>
-                                        <p>Тур в Малайзию</p>
-                                        <StyledCardBottom>
-                                            <p>
-                                                <FontAwesomeIcon icon={faPlane} color="#a11a39" /> индивидуальный период
-                                            </p>
-                                            <p>
-                                                <FontAwesomeIcon icon={faCalendarAlt} color="#a11a39" /> Круглый год
-                                            </p>
-                                        </StyledCardBottom>
-                                    </StyledSliderItem>
-                                </ScrollAnimation>
-                                <ScrollAnimation animateIn="zoomIn" duration={2} delay={600} animateOnce={true}>
-                                    <StyledSliderItem>
-                                        <img src="../img/tourism-tour6.png" alt="tour6" />
-                                        <h4>Стамбул</h4>
-                                        <p>Тур в Стамбул</p>
-                                        <StyledCardBottom>
-                                            <p>
-                                                <FontAwesomeIcon icon={faPlane} color="#a11a39" /> индивидуальный период
-                                            </p>
-                                            <p>
-                                                <FontAwesomeIcon icon={faCalendarAlt} color="#a11a39" /> Круглый год
-                                            </p>
-                                        </StyledCardBottom>
-                                    </StyledSliderItem>
-                                </ScrollAnimation>
-                            </StyledSliderItems>
-                        </div>
-                        <div>
-                            <StyledSliderItems>
+    const { t } = useTranslation();
+    const settings = {
+        dots: false,
+        infinite: true,
+        speed: 500,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        initialSlide: 0,
+    };
+
+    return (
+        <StyledTestimonialsSection id="tours">
+            <Container>
+                <ScrollAnimation animateIn="fadeIn" duration={3} animateOnce={true}>
+                    <SectionHeader text={t("Самые выгодные и интересные туры")} color="#ffffff" subcolor="#ffffff" />
+                </ScrollAnimation>
+                <Slider {...settings}>
+                    <div>
+                        <StyledSliderItems>
+                            <ScrollAnimation animateIn="zoomIn" duration={2} animateOnce={true}>
                                 <StyledSliderItem>
                                     <img src="../img/tourism-tour1.png" alt="tour1" />
-                                    <h4>Пхукет</h4>
-                                    <p>Прямые перелеты до острова</p>
+                                    <h4>{t("Пхукет")}</h4>
+                                    <p>{t("Прямые перелеты до острова")}</p>
                                     <StyledCardBottom>
                                         <p>
-                                            <FontAwesomeIcon icon={faPlane} color="#a11a39" /> индивидуальный период
+                                            <FontAwesomeIcon icon={faPlane} color="#a11a39" /> {t("индивидуальный период")}
                                         </p>
                                         <p>
-                                            <FontAwesomeIcon icon={faCalendarAlt} color="#a11a39" /> Круглый год
+                                            <FontAwesomeIcon icon={faCalendarAlt} color="#a11a39" /> {t("Круглый год")}
                                         </p>
                                     </StyledCardBottom>
                                 </StyledSliderItem>
+                            </ScrollAnimation>
+                            <ScrollAnimation animateIn="zoomIn" duration={2} delay={300} animateOnce={true}>
                                 <StyledSliderItem>
                                     <img src="../img/tourism-tour2.png" alt="tour2" />
-                                    <h4>Мальдивы</h4>
-                                    <p>Скидка до 45%</p>
+                                    <h4>{t("Мальдивы")}</h4>
+                                    <p>{t("Скидка до 45%")}</p>
                                     <StyledCardBottom>
                                         <p>
-                                            <FontAwesomeIcon icon={faPlane} color="#a11a39" /> индивидуальный период
+                                            <FontAwesomeIcon icon={faPlane} color="#a11a39" /> {t("индивидуальный период")}
                                         </p>
                                         <p>
-                                            <FontAwesomeIcon icon={faCalendarAlt} color="#a11a39" /> Круглый год
+                                            <FontAwesomeIcon icon={faCalendarAlt} color="#a11a39" /> {t("Круглый год")}
                                         </p>
                                     </StyledCardBottom>
                                 </StyledSliderItem>
+                            </ScrollAnimation>
+                            <ScrollAnimation animateIn="zoomIn" duration={2} delay={600} animateOnce={true}>
                                 <StyledSliderItem>
                                     <img src="../img/tourism-tour3.png" alt="tour3" />
-                                    <h4>Остров БОНЕО</h4>
-                                    <p>Групповые туры</p>
+                                    <h4>{t("Остров БОНЕО")}</h4>
+                                    <p>{t("Групповые туры")}</p>
                                     <StyledCardBottom>
                                         <p>
-                                            <FontAwesomeIcon icon={faPlane} color="#a11a39" /> индивидуальный период
+                                            <FontAwesomeIcon icon={faPlane} color="#a11a39" /> {t("индивидуальный период")}
                                         </p>
                                         <p>
-                                            <FontAwesomeIcon icon={faCalendarAlt} color="#a11a39" /> Круглый год
+                                            <FontAwesomeIcon icon={faCalendarAlt} color="#a11a39" /> {t("Круглый год")}
                                         </p>
                                     </StyledCardBottom>
                                 </StyledSliderItem>
+                            </ScrollAnimation>
+                            <ScrollAnimation animateIn="zoomIn" duration={2} animateOnce={true}>
                                 <StyledSliderItem>
                                     <img src="../img/tourism-tour4.png" alt="tour4" />
-                                    <h4>Бадрум</h4>
-                                    <p>Бесплатные ночи в бадруме</p>
+                                    <h4>{t("Бадрум")}</h4>
+                                    <p>{t("Бесплатные ночи в бадруме")}</p>
                                     <StyledCardBottom>
                                         <p>
-                                            <FontAwesomeIcon icon={faPlane} color="#a11a39" /> индивидуальный период
+                                            <FontAwesomeIcon icon={faPlane} color="#a11a39" /> {t("индивидуальный период")}
                                         </p>
                                         <p>
-                                            <FontAwesomeIcon icon={faCalendarAlt} color="#a11a39" /> Круглый год
+                                            <FontAwesomeIcon icon={faCalendarAlt} color="#a11a39" /> {t("Круглый год")}
                                         </p>
                                     </StyledCardBottom>
                                 </StyledSliderItem>
+                            </ScrollAnimation>
+                            <ScrollAnimation animateIn="zoomIn" duration={2} delay={300} animateOnce={true}>
                                 <StyledSliderItem>
                                     <img src="../img/tourism-tour5.png" alt="tour5" />
-                                    <h4>Малазийские мальдивы</h4>
-                                    <p>Тур в Малайзию</p>
+                                    <h4>{t("Малазийские мальдивы")}</h4>
+                                    <p>{t("Тур в Малайзию")}</p>
                                     <StyledCardBottom>
                                         <p>
-                                            <FontAwesomeIcon icon={faPlane} color="#a11a39" /> индивидуальный период
+                                            <FontAwesomeIcon icon={faPlane} color="#a11a39" /> {t("индивидуальный период")}
                                         </p>
                                         <p>
-                                            <FontAwesomeIcon icon={faCalendarAlt} color="#a11a39" /> Круглый год
+                                            <FontAwesomeIcon icon={faCalendarAlt} color="#a11a39" /> {t("Круглый год")}
                                         </p>
                                     </StyledCardBottom>
                                 </StyledSliderItem>
+                            </ScrollAnimation>
+                            <ScrollAnimation animateIn="zoomIn" duration={2} delay={600} animateOnce={true}>
                                 <StyledSliderItem>
                                     <img src="../img/tourism-tour6.png" alt="tour6" />
-                                    <h4>Стамбул</h4>
-                                    <p>Тур в Стамбул</p>
+                                    <h4>{t("Стамбул")}</h4>
+                                    <p>{t("Тур в Стамбул")}</p>
                                     <StyledCardBottom>
                                         <p>
-                                            <FontAwesomeIcon icon={faPlane} color="#a11a39" /> индивидуальный период
+                                            <FontAwesomeIcon icon={faPlane} color="#a11a39" /> {t("индивидуальный период")}
                                         </p>
                                         <p>
-                                            <FontAwesomeIcon icon={faCalendarAlt} color="#a11a39" /> Круглый год
+                                            <FontAwesomeIcon icon={faCalendarAlt} color="#a11a39" /> {t("Круглый год")}
                                         </p>
                                     </StyledCardBottom>
                                 </StyledSliderItem>
-                            </StyledSliderItems>
-                        </div>
-                    </Slider>
-                </Container>
-            </StyledTestimonialsSection>
-        );
-    }
+                            </ScrollAnimation>
+                        </StyledSliderItems>
+                    </div>
+                    <div>
+                        <StyledSliderItems>
+                            <StyledSliderItem>
+                                <img src="../img/tourism-tour1.png" alt="tour1" />
+                                <h4>{t("Пхукет")}</h4>
+                                <p>{t("Прямые перелеты до острова")}</p>
+                                <StyledCardBottom>
+                                    <p>
+                                        <FontAwesomeIcon icon={faPlane} color="#a11a39" /> {t("индивидуальный период")}
+                                    </p>
+                                    <p>
+                                        <FontAwesomeIcon icon={faCalendarAlt} color="#a11a39" /> {t("Круглый год")}
+                                    </p>
+                                </StyledCardBottom>
+                            </StyledSliderItem>
+                            <StyledSliderItem>
+                                <img src="../img/tourism-tour2.png" alt="tour2" />
+                                <h4>{t("Мальдивы")}</h4>
+                                <p>{t("Скидка до 45%")}</p>
+                                <StyledCardBottom>
+                                    <p>
+                                        <FontAwesomeIcon icon={faPlane} color="#a11a39" /> {t("индивидуальный период")}
+                                    </p>
+                                    <p>
+                                        <FontAwesomeIcon icon={faCalendarAlt} color="#a11a39" /> {t("Круглый год")}
+                                    </p>
+                                </StyledCardBottom>
+                            </StyledSliderItem>
+                            <StyledSliderItem>
+                                <img src="../img/tourism-tour3.png" alt="tour3" />
+                                <h4>{t("Остров БОНЕО")}</h4>
+                                <p>{t("Групповые туры")}</p>
+                                <StyledCardBottom>
+                                    <p>
+                                        <FontAwesomeIcon icon={faPlane} color="#a11a39" /> {t("индивидуальный период")}
+                                    </p>
+                                    <p>
+                                        <FontAwesomeIcon icon={faCalendarAlt} color="#a11a39" /> {t("Круглый год")}
+                                    </p>
+                                </StyledCardBottom>
+                            </StyledSliderItem>
+                            <StyledSliderItem>
+                                <img src="../img/tourism-tour4.png" alt="tour4" />
+                                <h4>{t("Бадрум")}</h4>
+                                <p>{t("Бесплатные ночи в бадруме")}</p>
+                                <StyledCardBottom>
+                                    <p>
+                                        <FontAwesomeIcon icon={faPlane} color="#a11a39" /> {t("индивидуальный период")}
+                                    </p>
+                                    <p>
+                                        <FontAwesomeIcon icon={faCalendarAlt} color="#a11a39" /> {t("Круглый год")}
+                                    </p>
+                                </StyledCardBottom>
+                            </StyledSliderItem>
+                            <StyledSliderItem>
+                                <img src="../img/tourism-tour5.png" alt="tour5" />
+                                <h4>{t("Малазийские мальдивы")}</h4>
+                                <p>{t("Тур в Малайзию")}</p>
+                                <StyledCardBottom>
+                                    <p>
+                                        <FontAwesomeIcon icon={faPlane} color="#a11a39" /> {t("индивидуальный период")}
+                                    </p>
+                                    <p>
+                                        <FontAwesomeIcon icon={faCalendarAlt} color="#a11a39" /> {t("Круглый год")}
+                                    </p>
+                                </StyledCardBottom>
+                            </StyledSliderItem>
+                            <StyledSliderItem>
+                                <img src="../img/tourism-tour6.png" alt="tour6" />
+                                <h4>{t("Стамбул")}</h4>
+                                <p>{t("Тур в Стамбул")}</p>
+                                <StyledCardBottom>
+                                    <p>
+                                        <FontAwesomeIcon icon={faPlane} color="#a11a39" /> {t("индивидуальный период")}
+                                    </p>
+                                    <p>
+                                        <FontAwesomeIcon icon={faCalendarAlt} color="#a11a39" /> {t("Круглый год")}
+                                    </p>
+                                </StyledCardBottom>
+                            </StyledSliderItem>
+                        </StyledSliderItems>
+                    </div>
+                </Slider>
+            </Container>
+        </StyledTestimonialsSection>
+    );
 };
+
+export default TourismTours;

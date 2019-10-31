@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ScrollAnimation from 'react-animate-on-scroll';
+import { useTranslation } from 'react-i18next';
 
 import Container from './Container';
 import SectionHeader from './SectionHeader';
@@ -113,72 +114,73 @@ const StyledFeaturesItem = styled.div`
 const FeaturesSection = (props) => {
 
     const { handleClick } = props;
+    const { t } = useTranslation();
 
     return (
         <StyledFeaturesSection id="features">
             <Container>
                 <ScrollAnimation animateIn="fadeIn" duration={2} animateOnce={true}>
-                    <SectionHeader text="Работая с нами вы получите" color="#2d2d2d" subcolor="#a11a39" />
+                    <SectionHeader text={t("Работая с нами вы получите")} color="#2d2d2d" subcolor="#a11a39" />
                 </ScrollAnimation>
                 <StyledFeaturesItems>
                     <ScrollAnimation animateIn="fadeIn" duration={2} delay={200} animateOnce={true}>
                         <StyledFeaturesItem >
                             <span>01</span>
-                            <h3>Качество</h3>
-                            <p>Работаем на международном уровне</p>
+                            <h3>{t("Качество")}</h3>
+                            <p>{t("Работаем на международном уровне")}</p>
                         </StyledFeaturesItem>
                     </ScrollAnimation>
                     <ScrollAnimation animateIn="fadeIn" duration={2} delay={300} animateOnce={true}>
                         <StyledFeaturesItem >
                             <span>02</span>
-                            <h3>Надежность</h3>
-                            <p>Иммиграционные юристы высшей квалификации</p>
+                            <h3>{t("Надежность")}</h3>
+                            <p>{t("Иммиграционные юристы высшей квалификации")}</p>
                         </StyledFeaturesItem>
                     </ScrollAnimation>
                     <ScrollAnimation animateIn="fadeIn" duration={2} delay={400} animateOnce={true}>
                         <StyledFeaturesItem >
                             <span>03</span>
-                            <h3>Оперативность</h3>
-                            <p>Быстрый результат за короткое время</p>
+                            <h3>{t("Оперативность")}</h3>
+                            <p>{t("Быстрый результат за короткое время")}</p>
                         </StyledFeaturesItem>
                     </ScrollAnimation>
                     <ScrollAnimation animateIn="fadeIn" duration={2} delay={500} animateOnce={true}>
                         <StyledFeaturesItem >
                             <span>04</span>
-                            <h3>Профессионализм</h3>
-                            <p>Наша команда работает много лет</p>
+                            <h3>{t("Профессионализм")}</h3>
+                            <p>{t("Наша команда работает много лет")}</p>
                         </StyledFeaturesItem>
                     </ScrollAnimation>
                     <ScrollAnimation animateIn="fadeIn" duration={2} delay={200} animateOnce={true}>
                         <StyledFeaturesItem >
                             <span>05</span>
-                            <h3>Доверие</h3>
-                            <p>решаем проблемы вашего пребывания за рубежом</p>
+                            <h3>{t("Доверие")}</h3>
+                            <p>{t("Решаем проблемы вашего пребывания за рубежом")}</p>
                         </StyledFeaturesItem>
                     </ScrollAnimation>
                     <ScrollAnimation animateIn="fadeIn" duration={2} delay={300} animateOnce={true}>
                         <StyledFeaturesItem >
                             <span>06</span>
-                            <h3>Разумные цены</h3>
-                            <p>Наиболее выгодные условия для нашего сотрудничества</p>
+                            <h3>{t("Разумные цены")}</h3>
+                            <p>{t("Наиболее выгодные условия для нашего сотрудничества")}</p>
                         </StyledFeaturesItem>
                     </ScrollAnimation>
                     <ScrollAnimation animateIn="fadeIn" duration={2} delay={400} animateOnce={true}>
                         <StyledFeaturesItem >
                             <span>07</span>
-                            <h3>Репутация</h3>
-                            <p>93 % клиентов рекомендуют нас своим бликим</p>
+                            <h3>{t("Репутация")}</h3>
+                            <p>{t("93 % клиентов рекомендуют нас своим бликим")}</p>
                         </StyledFeaturesItem>
                     </ScrollAnimation>
                     <ScrollAnimation animateIn="fadeIn" duration={2} delay={500} animateOnce={true}>
                         <StyledFeaturesItem >
                             <span>08</span>
-                            <h3>Номер 1 в АЗИИ</h3>
-                            <p>Крупнейшая компания в Центральной Азии</p>
+                            <h3>{t("Номер 1 в АЗИИ")}</h3>
+                            <p>{t("Крупнейшая компания в Центральной Азии")}</p>
                         </StyledFeaturesItem>
                     </ScrollAnimation>
                 </StyledFeaturesItems>
-                <MainButton handleClick={handleClick} margin="90px auto 0" text="Получите консультацию прямо сейчас" />
+                <MainButton handleClick={handleClick} margin="90px auto 0" text={t("Получите консультацию прямо сейчас")} />
             </Container>
         </StyledFeaturesSection>
     )

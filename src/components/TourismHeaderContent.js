@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import MainButton from './MainButton';
 import HeaderBannerLogo from '../img/header-logo.png';
+import { useTranslation } from 'react-i18next';
 
 const StyledHeaderBanner = styled.div`
     display: flex;
@@ -117,15 +118,16 @@ const StyledHeaderBannerText = styled.p`
 const TourismHeaderContent = (props) => {
 
     const { text, handleClick, linkTo } = props;
+    const { t } = useTranslation();
 
     return (
         <StyledHeaderBanner>
             <StyledHeaderBannerLogo />
             <StyledHeaderBannerTitle>
-                Туризм
+                {t("туризм")}
             </StyledHeaderBannerTitle>
             <StyledHeaderBannerText>
-                Наша команда квалифицированные и первоклассные специалисты в области туризма.Мы представляем Вам самые разные направления туризма, а именно отдых в курортных зонах, деловой туризм, эко туризм, оздоровительный, конгрессно - выставочный, приключенческий, спортивный. Наша главная задача - это обеспечение безопасного, комфортного и качественного отдыха по самым низким ценам
+                {t("текст банера главная туризм")}
             </StyledHeaderBannerText>
             <MainButton handleClick={handleClick} text={text} margin="0 0 197px 60px" linkTo={linkTo} />
         </StyledHeaderBanner>

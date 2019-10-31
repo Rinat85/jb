@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import ScrollAnimation from 'react-animate-on-scroll';
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import { useTranslation } from 'react-i18next';
 
 import Container from './Container';
 import SectionHeader from './SectionHeader';
@@ -13,6 +14,10 @@ const StyledTestimonialsSection = styled.section`
     padding: 97px 0 97px 0;
     background: url(${Bg}) no-repeat center center;
     background-size: cover;
+
+    .slick-slide div {
+        vertical-align: top;
+    }
 
     .slick-dots li button:before {
         content: '◇';
@@ -48,7 +53,7 @@ const StyledTestimonialsSection = styled.section`
 
 const StyledSliderItem = styled.div`
     max-width: 540px;
-    min-height: 300px;
+    min-height: 320px;
     background-color: white;
     position: relative;
     z-index: 100;
@@ -169,112 +174,104 @@ const StyledSliderItem = styled.div`
     }
 `;
 
-const testimonials = {
-    user1: {
-        name: 'Севара Гафарова',
-        position: 'Швея(Италия)',
-        post: 'Окончила техникум по швейному делу работала за копейки в Узбекистане. Нашла в интернете данную компанию. Пришла в офис менеджеры все рассказали выбрали работу по специальности! Оперативно оформили документы. Отправили в Италию там меня встретили обеспечили жильем - уже 9 месяцев получаю достойную зарплату!',
-        date: '11.04.2019',
-        ava: 'ava11'
-    },
-    user2: {
-        name: 'Сардор Бахтиев',
-        position: 'Каменьщик(Сан - франциско)',
-        post: 'Оформлялся через компанию JB еще в 2018 году. Хотел отделочником. Взяли каменщиком. Работа на стройке в Сан-франциско. Сейчас зарплата минимум 3000 дол/мес. Визу ребята оформили быстро. Спасибо Вам JB что круто изменили мою жизнь. Сейчас еще отца подтяну!',
-        date: '03.05.2019',
-        ava: 'ava6'
-    },
-    user3: {
-        name: 'Ильдар Сафаров',
-        position: 'Водитель ( Варшава)',
-        post: 'Работал как то в Москве. Ездит нужно было по 20 часов в сутки без сна из рейса в рейс. Тут обратился в компанию JB. Сотрудники пригласили в офис. Собрали документы. Через 2 недели позвонили попросили приехать. Нашли работу в Варшаве на Больше груз. Сделали визу отправили все рассказали. Только приехал через два дня уже в рейсе был. Всем доволен! Спасибо!',
-        date: '17.05.2019',
-        ava: 'ava8'
-    },
-    user4: {
-        name: 'Гульнара Ахмедова',
-        position: 'Сборщица фруктов( Испания)',
-        post: 'Хочу выразить благодарность компании JB. Мы изменили жизнь девушки из Ташкентской области. Я счастлива и всем довольна. Не думала, что без знания языка и образования я могла бы найти работу в Европе. Но вы очень быстро помогли мне. Сейчас я получаю хорошую зарплату и помогаю своей семье. Высылаю им деньги. Спасибо JB!',
-        date: '24.05.2019',
-        ava: 'ava12'
-    },
-    user5: {
-        name: 'Шакир Маговедов',
-        position: 'Плотник( Руайан )',
-        post: 'Здравствуйте! Спасибо большое этой компании за помощь в трудный период в жизни, через них поехал во Францию работать в порту плотником. Мне помогли со всеми документами жильем. Примерно через месяц и пару недель я уже была на месте и работал, оформили полностью легально. За что хочу сказать большое спасибо!',
-        date: '08.06.2019',
-        ava: 'ava9'
-    },
-    user6: {
-        name: 'Ислам Дильмиров',
-        position: 'Сварщик ( Прага)',
-        post: 'Ездил через компанию JB сварщиком в Чехию. Работали на небольшом предприятии в маленьком цеху. Заработок был хороший очень. График плавающий – один день работали дольше на второй день можно было брать меньше часов и нормально высыпаться. Жилье хорошее, бесплатное к тому же .Спасибо вам.',
-        date: '21.07.2019',
-        ava: 'ava10'
-    }
-};
+const TestimonialsSection = () => {
 
-const sliderItem = (Object.values(testimonials)).map( user => {
-    return (
-        <div key={user}>
-            <StyledSliderItem avatar={user.ava} postDate={user.date}>
-                <h4>{user.name}</h4>
-                <h5>{user.position}</h5>
-                <p>{user.post}</p>
-            </StyledSliderItem>
-        </div>
-    )
-});
-
-export default class TestimonialsSection extends Component {
-    render() {
-        const settings = {
-            dots: true,
-            infinite: true,
-            speed: 500,
-            slidesToShow: 2,
-            slidesToScroll: 2,
-            initialSlide: 0,
-            responsive: [
-                {
-                    breakpoint: 1024,
-                    settings: {
-                        slidesToShow: 2,
-                        slidesToScroll: 2,
-                        infinite: true,
-                        dots: true
-                    }
-                },
-                {
-                    breakpoint: 600,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1,
-                        initialSlide: 2
-                    }
-                },
-                {
-                    breakpoint: 480,
-                    settings: {
-                        slidesToShow: 1,
-                        slidesToScroll: 1
-                    }
+    const { t } = useTranslation();
+    const settings = {
+        dots: true,
+        infinite: true,
+        speed: 500,
+        initialSlide: 0,
+        easing: 'ease-in-out',
+        adaptiveHeight: true,
+        rows: 2,
+        slidesPerRow: 2,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    rows: 1,
+                    slidesPerRow: 1,
+                    slidesToShow: 1,
+                    slidesToScroll: 1
                 }
-            ]
-        };
-        return (
-            <StyledTestimonialsSection>
-                <Container>
-                    <ScrollAnimation animateIn="fadeIn" duration={2} animateOnce={true}>
-                        <SectionHeader text="Довольные клиенты" color="#ffffff" subcolor="#ffffff" />
-                    </ScrollAnimation>
-                    <ScrollAnimation animateIn="fadeIn" duration={2} delay={300} animateOnce={true}>
-                        <Slider {...settings}>
-                            {sliderItem}
-                        </Slider>
-                    </ScrollAnimation>
-                </Container>
-            </StyledTestimonialsSection>
-        );
-    }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    rows: 1,
+                    slidesPerRow: 1,
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    rows: 1,
+                    slidesPerRow: 1,
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    };
+
+    return (
+        <StyledTestimonialsSection>
+            <Container>
+                <ScrollAnimation animateIn="fadeIn" duration={2} animateOnce={true}>
+                    <SectionHeader text={t("Довольные клиенты")} color="#ffffff" subcolor="#ffffff" />
+                </ScrollAnimation>
+                <ScrollAnimation animateIn="fadeIn" duration={2} delay={300} animateOnce={true}>
+                    <Slider {...settings}>
+                        <div>
+                            <StyledSliderItem avatar={"ava11"} postDate={"11.04.2019"}>
+                                <h4>{t("Севара Гафарова")}</h4>
+                                <h5>{t("Швея (Италия)")}</h5>
+                                <p>{t("Окончила техникум по швейному делу работала за копейки в Узбекистане. Нашла в интернете данную компанию. Пришла в офис менеджеры все рассказали выбрали работу по специальности! Оперативно оформили документы. Отправили в Италию там меня встретили обеспечили жильем - уже 9 месяцев получаю достойную зарплату!")}</p>
+                            </StyledSliderItem>
+                        </div>
+                        <div>
+                            <StyledSliderItem avatar={"ava6"} postDate={"03.05.2019"}>
+                                <h4>{t("Сардор Бахтиев")}</h4>
+                                <h5>{t("Каменьщик (Сан - франциско)")}</h5>
+                                <p>{t("Оформлялся через компанию JB еще в 2018 году. Хотел отделочником. Взяли каменщиком. Работа на стройке в Сан-франциско. Сейчас зарплата минимум 3000 дол/мес. Визу ребята оформили быстро. Спасибо Вам JB что круто изменили мою жизнь. Сейчас еще отца подтяну!")}</p>
+                            </StyledSliderItem>
+                        </div>
+                        <div>
+                            <StyledSliderItem avatar={"ava8"} postDate={"17.05.2019"}>
+                                <h4>{t("Ильдар Сафаров")}</h4>
+                                <h5>{t("Водитель (Варшава)")}</h5>
+                                <p>{t("Работал как то в Москве. Ездит нужно было по 20 часов в сутки без сна из рейса в рейс. Тут обратился в компанию JB. Сотрудники пригласили в офис. Собрали документы. Через 2 недели позвонили попросили приехать. Нашли работу в Варшаве на Больше груз. Сделали визу отправили все рассказали. Только приехал через два дня уже в рейсе был. Всем доволен! Спасибо!")}</p>
+                            </StyledSliderItem>
+                        </div>
+                        <div>
+                            <StyledSliderItem avatar={"ava12"} postDate={"24.05.2019"}>
+                                <h4>{t("Гульнара Ахмедова")}</h4>
+                                <h5>{t("Сборщица фруктов (Испания)")}</h5>
+                                <p>{t("Хочу выразить благодарность компании JB. Мы изменили жизнь девушки из Ташкентской области. Я счастлива и всем довольна. Не думала, что без знания языка и образования я могла бы найти работу в Европе. Но вы очень быстро помогли мне. Сейчас я получаю хорошую зарплату и помогаю своей семье. Высылаю им деньги. Спасибо JB!")}</p>
+                            </StyledSliderItem>
+                        </div>
+                        <div>
+                            <StyledSliderItem avatar={"ava9"} postDate={"08.06.2019"}>
+                                <h4>{t("Шакир Маговедов")}</h4>
+                                <h5>{t("Плотник (Руайан)")}</h5>
+                                <p>{t("Здравствуйте! Спасибо большое этой компании за помощь в трудный период в жизни, через них поехал во Францию работать в порту плотником. Мне помогли со всеми документами жильем. Примерно через месяц и пару недель я уже была на месте и работал, оформили полностью легально. За что хочу сказать большое спасибо!")}</p>
+                            </StyledSliderItem>
+                        </div>
+                        <div>
+                            <StyledSliderItem avatar={"ava10"} postDate={"21.07.2019"}>
+                                <h4>{t("Ислам Дильмиров")}</h4>
+                                <h5>{t("Сварщик (Прага)")}</h5>
+                                <p>{t("Ездил через компанию JB сварщиком в Чехию. Работали на небольшом предприятии в маленьком цеху. Заработок был хороший очень. График плавающий – один день работали дольше на второй день можно было брать меньше часов и нормально высыпаться. Жилье хорошее, бесплатное к тому же .Спасибо вам.")}</p>
+                            </StyledSliderItem>
+                        </div>
+                    </Slider>
+                </ScrollAnimation>
+            </Container>
+        </StyledTestimonialsSection>
+    );
 };
+
+export default TestimonialsSection;

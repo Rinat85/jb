@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ScrollAnimation from 'react-animate-on-scroll';
+import { useTranslation } from 'react-i18next';
 
 import Container from './Container';
 import SectionHeader from './SectionHeader';
@@ -195,84 +196,87 @@ const StyledBorderedHeading = styled.div`
 `;
 
 const TourismServices = () => {
+
+    const { t } = useTranslation();
+
     return (
         <StyledServicesSection id="services">
             <Container>
                 <ScrollAnimation animateIn="fadeIn" duration={2} animateOnce={true}>
-                    <SectionHeader text="Наши услуги" color="#2d2d2d" subcolor="#a11a39" />
+                    <SectionHeader text={t("наши услуги")} color="#2d2d2d" subcolor="#a11a39" />
                 </ScrollAnimation>
                 <StyledServicesItems>
                     <ScrollAnimation animateIn="fadeInUp" duration={1} animateOnce={true}>
                         <StyledServicesItem >
                             <img src="../img/tourism-services1.png" alt="eu"/>
-                            <h3>бронирование отелей по всему миру</h3>
+                            <h3>{t("бронирование отелей по всему миру")}</h3>
                         </StyledServicesItem>
                     </ScrollAnimation>
                     <ScrollAnimation animateIn="fadeInUp" duration={2} animateOnce={true}>
                         <StyledServicesItem >
                             <img src="../img/tourism-services2.png" alt="eu"/>
-                            <h3>Бронирование авиабилетов по всем направлениям</h3>
+                            <h3>{t("Бронирование авиабилетов по всем направлениям")}</h3>
                         </StyledServicesItem>
                     </ScrollAnimation>
                     <ScrollAnimation animateIn="fadeInUp" duration={3} animateOnce={true}>
                         <StyledServicesItem >
                             <img src="../img/tourism-services3.png" alt="eu"/>
-                            <h3>Подготовка необходимых документов в посольство</h3>
+                            <h3>{t("Подготовка необходимых документов в посольство")}</h3>
                         </StyledServicesItem>
                     </ScrollAnimation>
                     <ScrollAnimation animateIn="fadeInUp" duration={1} animateOnce={true}>
                         <StyledServicesItem >
                             <img src="../img/tourism-services4.png" alt="eu"/>
-                            <h3>Выписка медицинских страхований</h3>
+                            <h3>{t("Выписка медицинских страхований")}</h3>
                         </StyledServicesItem>
                     </ScrollAnimation>
                     <ScrollAnimation animateIn="fadeInUp" duration={2} animateOnce={true}>
                         <StyledServicesItem >
                             <img src="../img/tourism-services5.png" alt="eu"/>
-                            <h3>Транспортное обслуживание в период пребывания за границей (трансферы)</h3>
+                            <h3>{t("Транспортное обслуживание в период пребывания за границей (трансферы)")}</h3>
                         </StyledServicesItem>
                     </ScrollAnimation>
                     <ScrollAnimation animateIn="fadeInUp" duration={3} animateOnce={true}>
                         <StyledServicesItem >
                             <img src="../img/tourism-services6.png" alt="eu"/>
-                            <h3>Бронирование экскурсий, билетов на выставки</h3>
+                            <h3>{t("Бронирование экскурсий, билетов на выставки")}</h3>
                         </StyledServicesItem>
                     </ScrollAnimation>
                 </StyledServicesItems>
                 <StyledBorderedHeading>
                     <div></div>
-                    <h4>Виды туров</h4>
+                    <h4>{t("Виды туров")}</h4>
                     <div></div>
                 </StyledBorderedHeading>
                 <TourismServicesTours>
                     <ScrollAnimation animateIn="flipInX" duration={2} animateOnce={true}>
                         <TourismServicesItem >
                             <img src="../img/tours1.png" alt="eu"/>
-                            <h3>ИНДИВИДУАЛЬНЫЕ ТУРЫ</h3>
+                            <h3>{t("ИНДИВИДУАЛЬНЫЕ ТУРЫ")}</h3>
                         </TourismServicesItem>
                     </ScrollAnimation>
                     <ScrollAnimation animateIn="flipInX" duration={2} animateOnce={true}>
                         <TourismServicesItem >
                             <img src="../img/tours2.png" alt="eu"/>
-                            <h3>ГРУППОВЫЕ ТУРЫ</h3>
+                            <h3>{t("ГРУППОВЫЕ ТУРЫ")}</h3>
                         </TourismServicesItem>
                     </ScrollAnimation>
                     <ScrollAnimation animateIn="flipInX" duration={2} animateOnce={true}>
                         <TourismServicesItem >
                             <img src="../img/tours3.png" alt="eu"/>
-                            <h3>КОРПОРАТИВНЫЕ ТУРЫ</h3>
+                            <h3>{t("КОРПОРАТИВНЫЕ ТУРЫ")}</h3>
                         </TourismServicesItem>
                     </ScrollAnimation>
                     <ScrollAnimation animateIn="flipInX" duration={2} animateOnce={true}>
                         <TourismServicesItem >
                             <img src="../img/tours4.png" alt="eu"/>
-                            <h3>СПОРТИВНЫЕ ТУРЫ</h3>
+                            <h3>{t("СПОРТИВНЫЕ ТУРЫ")}</h3>
                         </TourismServicesItem>
                     </ScrollAnimation>
                     <ScrollAnimation animateIn="flipInX" duration={2} animateOnce={true}>
                         <TourismServicesItem >
                             <img src="../img/tours5.png" alt="eu"/>
-                            <h3>VIР ТУРЫ</h3>
+                            <h3>{t("VIР ТУРЫ")}</h3>
                         </TourismServicesItem>
                     </ScrollAnimation>
                 </TourismServicesTours>

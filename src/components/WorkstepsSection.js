@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ScrollAnimation from 'react-animate-on-scroll';
+import { useTranslation } from 'react-i18next';
 
 import Container from './Container';
 import SectionHeader from './SectionHeader';
@@ -104,53 +105,56 @@ const StyledWorkstepsItem = styled.div`
 
 
 const WorkstepsSection = () => {
+
+    const { t } = useTranslation();
+
     return (
         <StyledWorkstepsSection id="works">
             <Container>
                 <ScrollAnimation animateIn="fadeIn" duration={2} animateOnce={true}>
-                    <SectionHeader text="Этап работы" color="#ffffff" subcolor="#ffffff" />
+                    <SectionHeader text={t("Этап работы")} color="#ffffff" subcolor="#ffffff" />
                 </ScrollAnimation>
                 <StyledWorkstepsItems>
                     <StyledWorkstepsItem>
                         <ScrollAnimation animateIn="fadeIn" duration={2} delay={200} animateOnce={true}>
                             <img src="../img/step1.png" alt="step1" />
-                            <h4>1 этап</h4>
-                            <p>Клиент приезжает в офис и получает консультацию (мы предоставляем клиенту вакансии с разных стран, он определяется....)</p>
+                            <h4>1 {t("этап")}</h4>
+                            <p>{t("1 этап контекст")}</p>
                         </ScrollAnimation>
                     </StyledWorkstepsItem>
                     <StyledWorkstepsItem>
                         <ScrollAnimation animateIn="fadeIn" duration={2} delay={400} animateOnce={true}>
                             <img src="../img/step2.png" alt="step2" />
-                            <h4>2 этап</h4>
-                            <p>Заключается догоровор между клиентом и компанией ( 100% оплата через банк только)</p>
+                            <h4>2 {t("этап")}</h4>
+                            <p>{t("2 этап контекст")}</p>
                         </ScrollAnimation>
                     </StyledWorkstepsItem>
                     <StyledWorkstepsItem>
                         <ScrollAnimation animateIn="fadeIn" duration={2} delay={600} animateOnce={true}>
                             <img src="../img/step3.png" alt="step3" />
-                            <h4>3 этап</h4>
-                            <p>Клиент предоставляет нам все необходимые документы со своей стороны (паспорт, фото, мед.справка, и т.д.)</p>
+                            <h4>3 {t("этап")}</h4>
+                            <p>{t("3 этап контекст")}</p>
                         </ScrollAnimation>
                     </StyledWorkstepsItem>
                     <StyledWorkstepsItem>
                         <ScrollAnimation animateIn="fadeIn" duration={2} delay={200} animateOnce={true}>
                             <img src="../img/step4.png" alt="step4" />
-                            <h4>4 этап</h4>
-                            <p>Подготовка документов (смотря какое посольство (заполнение анкеты, резюме, виза) и передаётся работадателю в зарубеж. И работадатель отправляет нам РАБОЧИЙ КОНТРАКТ</p>
+                            <h4>4 {t("этап")}</h4>
+                            <p>{t("4 этап контекст")}</p>
                         </ScrollAnimation>
                     </StyledWorkstepsItem>
                     <StyledWorkstepsItem>
                         <ScrollAnimation animateIn="fadeIn" duration={2} delay={400} animateOnce={true}>
                             <img src="../img/step5.png" alt="step5" />
-                            <h4>5 этап</h4>
-                            <p>Передаётся в консульство</p>
+                            <h4>5 {t("этап")}</h4>
+                            <p>{t("5 этап контекст")}</p>
                         </ScrollAnimation>
                     </StyledWorkstepsItem>
                     <StyledWorkstepsItem>
                         <ScrollAnimation animateIn="fadeIn" duration={2} delay={600} animateOnce={true}>
                             <img src="../img/step6.png" alt="step6" />
-                            <h4>6 этап</h4>
-                            <p>Получается виза. ЕСЛИ В ПОЛУЧЕНИИ ВИЗЫ КЛИЕНТУ ОТКАЗАЛИ (на это должна быть весомая причина) 100% СУММА ВОЗВРАЩАЕТСЯ КЛИЕНТУ КРОМЕ КОНСУЛЬСКОГО СБОРА</p>
+                            <h4>6 {t("этап")}</h4>
+                            <p>{t("6 этап контекст")}</p>
                         </ScrollAnimation>
                     </StyledWorkstepsItem>
                 </StyledWorkstepsItems>

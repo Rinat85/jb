@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import ScrollAnimation from 'react-animate-on-scroll';
+import { useTranslation } from 'react-i18next';
 
 const StyledOverlay = styled.div`
     display: ${props => props.show ? 'block' : 'none'};
@@ -88,7 +89,7 @@ const StyledModalForm = styled.form`
         cursor: pointer;
 
         ::before {
-            content: 'отправить';
+            content: '${props => props.buttonname ? props.buttonname : ''}';
             display: inline-block;
             color: white;
             position: absolute;
@@ -113,7 +114,11 @@ const MainModal = (props) => {
 
     const [ name, setName ] = useState('');
     const [ phone, setPhone ] = useState('');
-    const [isSent, setIsSent] = useState(false);
+    const [ isSent, setIsSent ] = useState(false);
+    const [ isOpen, setIsOpen ] = useState(false);
+
+    const { t } = useTranslation();
+    
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -129,28 +134,29 @@ const MainModal = (props) => {
         .then(() => setIsSent(true))
         .catch(err => console.log(err));
     }
+    
+    useEffect(() => {
+        setIsOpen(props.show)
+    }, [props.show]);
 
     return (
-        <StyledOverlay show={props.show}>
+        <StyledOverlay show={isOpen}>
             <ScrollAnimation 
                 animateIn="fadeIn" 
                 animateOnce={true} 
                 duration={2} 
                 offset={0}>
                 <StyledModalWrap>
-                    <span onClick={(e) => {
-                            props.handleClick();
-                            setIsSent(false);
-                        }}>✖</span>
+                    <span onClick={() => setIsOpen(false)}>✖</span>
                     {!isSent &&
                     (<>
-                        <h4>Заполните форму</h4>
-                        <p>мы с вами свяжемся</p>
-                        <StyledModalForm onSubmit={handleSubmit} method="POST">
+                        <h4>{t("Заполните форму")}</h4>
+                        <p>{t("мы с вами свяжемся")}</p>
+                        <StyledModalForm onSubmit={handleSubmit} method="POST" buttonname={t("Отправить")}>
                             <input 
                                 type="text" 
                                 name="name" 
-                                placeholder="Имя"
+                                placeholder={t("Имя")}
                                 value={name}
                                 onChange={e => setName(e.target.value)} 
                                 required 
@@ -158,16 +164,16 @@ const MainModal = (props) => {
                             <input 
                                 type="text" 
                                 name="phone" 
-                                placeholder="Номер телефона"
+                                placeholder={t("Номер телефона")}
                                 value={phone}
                                 onChange={e => setPhone(e.target.value)}  
                                 required 
                                 />
-                            <button type="submit">Отправить</button>
+                            <button type="submit">{t("Отправить")}</button>
                         </StyledModalForm>
                     </>)}
                     {isSent && 
-                    (<h4>Благодарим за заявку! Наши менеджеры свяжутся с вами.</h4>)}
+                    (<h4>{t("Благодарим за заявку! Наши менеджеры свяжутся с вами.")}</h4>)}
                 </StyledModalWrap>
             </ScrollAnimation>
         </StyledOverlay>

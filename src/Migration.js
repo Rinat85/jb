@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-
+import { useTranslation } from 'react-i18next';
 
 import Header from './components/Header';
 import MigrationMain from './components/MigrationMain';
@@ -16,38 +16,30 @@ const AppWrapper = styled.div`
   overflow: hidden;
 `;
 
-class Migration extends React.Component {
+const Migration = () => {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      show: false
-    };
-    this.handleClick = this.handleClick.bind(this);
-  }
-  
+  const [ show, setShow ] = useState(false);
+  const { t } = useTranslation();
 
-  handleClick() {
-    this.setState({
-      show: !this.state.show
+  const handleClick = () => {
+    setShow({
+      show: !show
     });
   }
-
-  render() {
-    return (
-      <React.Fragment>
-        <AppWrapper>
-          <div id="top"></div>
-          <Header text="получить консультацию" handleClick={this.handleClick} dataType="migration" contentType="migration" linkTo="#!" />
-          <MigrationMain handleClick={this.handleClick} />
-          <Footer dataType="migration" />
-          <StickyMenus />
-          <MainModal handleClick={this.handleClick} show={this.state.show} />
-          <div id="bottom"></div>
-        </AppWrapper>
-      </React.Fragment>
-    );
-  }  
+  
+  return (
+    <React.Fragment>
+      <AppWrapper>
+        <div id="top"></div>
+        <Header text={t("получить консультацию")} handleClick={handleClick} dataType="migration" contentType="migration" linkTo="#!" />
+        <MigrationMain handleClick={handleClick} />
+        <Footer dataType="migration" />
+        <StickyMenus />
+        <MainModal handleClick={handleClick} show={show} />
+        <div id="bottom"></div>
+      </AppWrapper>
+    </React.Fragment>
+  );
 }
 
 export default Migration;

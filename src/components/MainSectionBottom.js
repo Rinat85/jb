@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ScrollAnimation from 'react-animate-on-scroll';
+import { useTranslation } from 'react-i18next';
 
 import Container from './Container';
 import MainBottomBg from '../img/main-header-bg2.png';
@@ -145,6 +146,7 @@ const StyledHeaderBannerText = styled.p`
 const MainSectionBottom = (props) => {
 
     const { text, dataType, linkTo } = props;
+    const { t } = useTranslation();
 
     return (
         <ScrollAnimation animateIn="fadeIn" animateOnce={true}>
@@ -153,10 +155,10 @@ const MainSectionBottom = (props) => {
                     <StyledHeaderBanner>
                         <StyledHeaderBannerLogo />
                         <StyledHeaderBannerTitle>
-                            Туризм
+                            {t("туризм")}
                         </StyledHeaderBannerTitle>
                         <StyledHeaderBannerText>
-                            Наша команда квалифицированные и первоклассные специалисты в области туризма.Мы представляем Вам самые разные направления туризма, а именно отдых в курортных зонах, деловой туризм, эко туризм, оздоровительный, конгрессно - выставочный, приключенческий, спортивный. Наша главная задача - это обеспечение безопасного, комфортного и качественного отдыха по самым низким ценам
+                            {t("текст банера главная туризм")}
                         </StyledHeaderBannerText>
                         <MainButton text={text} linkTo={linkTo} margin="0 0 197px 60px" />
                     </StyledHeaderBanner>

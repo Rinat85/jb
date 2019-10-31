@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import ReactFlagsSelect from 'react-flags-select';
 import 'react-flags-select/css/react-flags-select.css';
@@ -80,18 +80,20 @@ const StyledLangbar = styled.div`
 const NavlangbarList = () => {
 
     const { i18n } = useTranslation();
+    const [ defLng, setDefLng ] = useState("RU");
 
     const onSelectFlag = (countryCode) => {
-        i18n.changeLanguage(countryCode)
+        setDefLng(countryCode, i18n.changeLanguage(countryCode));
+        console.log(defLng);
     };
 
     return (
         <StyledLangbar>
             <ReactFlagsSelect
-            defaultCountry="RU"
-            countries={["RU", "UZ"]}
-            customLabels={{"RU": "RU","UZ": "UZ"}}
-            onSelect={onSelectFlag} />
+                defaultCountry={defLng}
+                countries={["RU", "UZ"]}
+                customLabels={{"RU": "RU","UZ": "UZ"}}
+                onSelect={onSelectFlag} />
         </StyledLangbar>
     );
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { NavHashLink as NavLink } from 'react-router-hash-link';
+import { useTranslation } from 'react-i18next';
 
 const StyledNavbar = styled.ul`
     display: flex;
@@ -67,30 +68,32 @@ const StyledNavbarLink = styled.span`
 
 const Navbar = (props) => {
 
+    const { t } = useTranslation();
+
     const migrationList = [
         {
             id : 1,
-            title : 'наши услуги',
+            title : `${t('наши услуги')}`,
             link : '#services' 
         },
         {
             id : 2,
-            title : 'как мы работаем',
+            title : `${t('как мы работаем')}`,
             link : '#works' 
         },
         {
             id : 3,
-            title : 'наши преимущества',
+            title : `${t('наши преимущества')}`,
             link : '#features' 
         },
         {
             id : 4,
-            title : 'партнеры',
+            title : `${t('партнеры')}`,
             link : '#partners' 
         },
         {
             id : 5,
-            title : 'контакты',
+            title : `${t('контакты')}`,
             link : '#contacts' 
         }
     ];
@@ -98,55 +101,56 @@ const Navbar = (props) => {
     const mainList = [
         {
             id : 1,
-            title : 'туризм',
+            title : `${t("туризм")}`,
             link : '/tourism' 
         },
         {
             id : 2,
-            title : 'миграция',
+            title : `${t('миграция')}`,
             link : '/migration' 
         },
         {
             id : 3,
-            title : 'о компании',
+            title : `${t('о компании')}`,
             link : '#!' 
         }
     ];
+    
 
     const tourismList = [
         {
             id : 1,
-            title : 'наши услуги',
+            title : `${t('наши услуги')}`,
             link : '#services' 
         },
         {
             id : 2,
-            title : 'как мы работаем',
+            title : `${t('как мы работаем')}`,
             link : '#works' 
         },
         {
             id : 3,
-            title : 'туры на сегодня',
+            title : `${t('туры на сегодня')}`,
             link : '#tours' 
         },
         {
             id : 4,
-            title : 'отзывы',
+            title : `${t('отзывы')}`,
             link : '#testimonials' 
         },
         {
             id : 5,
-            title : 'партнеры',
+            title : `${t('партнеры')}`,
             link : '#partners' 
         },
         {
             id : 6,
-            title : 'контакты',
+            title : `${t('контакты')}`,
             link : '#contacts' 
         }
     ];
 
-    let navbarList =[];
+    let navbarList = [];
 
     switch (props.dataType) {
         case 'migration':

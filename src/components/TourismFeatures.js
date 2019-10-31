@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ScrollAnimation from 'react-animate-on-scroll';
+import { useTranslation } from 'react-i18next';
 
 import Container from './Container';
 import SectionHeader from './SectionHeader';
@@ -112,20 +113,21 @@ const StyledFeaturesItem = styled.div`
 const TourismFeatures = (props) => {
 
     const { handleClick } = props;
+    const { t } = useTranslation();
 
     return (
         <StyledFeaturesSection id="features">
             <Container>
                 <ScrollAnimation animateIn="fadeIn" duration={2} animateOnce={true}>
-                    <SectionHeader text="Работая с нами вы получите" color="#2d2d2d" subcolor="#a11a39" />
+                    <SectionHeader text={t("Работая с нами вы получите")} color="#2d2d2d" subcolor="#a11a39" />
                 </ScrollAnimation>
                 <StyledFeaturesItems>
                     <ScrollAnimation animateIn="fadeIn" duration={2} animateOnce={true}>
                         <StyledFeaturesItem>
                             <img src="../img/tourism-feature1.png" alt="feature1" />
                             <div>
-                                <h3>Лучшие туры</h3>
-                                <p>Предлагаем только самые интересные и проверенные туры.</p>
+                                <h3>{t("Лучшие туры")}</h3>
+                                <p>{t("Предлагаем только самые интересные и проверенные туры.")}</p>
                             </div>
                         </StyledFeaturesItem>
                     </ScrollAnimation>
@@ -133,8 +135,8 @@ const TourismFeatures = (props) => {
                         <StyledFeaturesItem>
                             <img src="../img/tourism-feature2.png" alt="feature2" />
                             <div>
-                                <h3>Выгодные цены</h3>
-                                <p>Гарантируем выгодные цены на все направления и туры. С нами дешевле.</p>
+                                <h3>{t("Выгодные цены")}</h3>
+                                <p>{t("Гарантируем выгодные цены на все направления и туры. С нами дешевле.")}</p>
                             </div>
                         </StyledFeaturesItem>
                     </ScrollAnimation>
@@ -142,8 +144,8 @@ const TourismFeatures = (props) => {
                         <StyledFeaturesItem>
                             <img src="../img/tourism-feature3.png" alt="feature3" />
                             <div>
-                                <h3>Лучшие отели</h3>
-                                <p>Рекомендуем отели с проверенной репутацией и отличными отзывами</p>
+                                <h3>{t("Лучшие отели")}</h3>
+                                <p>{t("Рекомендуем отели с проверенной репутацией и отличными отзывами")}</p>
                             </div>
                         </StyledFeaturesItem>
                     </ScrollAnimation>
@@ -151,8 +153,8 @@ const TourismFeatures = (props) => {
                         <StyledFeaturesItem>
                             <img src="../img/tourism-feature4.png" alt="feature4" />
                             <div>
-                                <h3>Быстрая бронь</h3>
-                                <p>Раннее бронирование позволит сэкономить до 30%.</p>
+                                <h3>{t("Быстрая бронь")}</h3>
+                                <p>{t("Раннее бронирование позволит сэкономить до 30%.")}</p>
                             </div>
                         </StyledFeaturesItem>
                     </ScrollAnimation>
@@ -160,8 +162,8 @@ const TourismFeatures = (props) => {
                         <StyledFeaturesItem>
                             <img src="../img/tourism-feature5.png" alt="feature5" />
                             <div>
-                                <h3>Визовая поддержка</h3>
-                                <p>Поможем решить самые сложные проблемы с визой.</p>
+                                <h3>{t("Визовая поддержка")}</h3>
+                                <p>{t("Поможем решить самые сложные проблемы с визой.")}</p>
                             </div>
                         </StyledFeaturesItem>
                     </ScrollAnimation>
@@ -169,13 +171,13 @@ const TourismFeatures = (props) => {
                         <StyledFeaturesItem>
                             <img src="../img/tourism-feature6.png" alt="feature6" />
                             <div>
-                                <h3>Любые туры</h3>
-                                <p>Подберем любой тур под Ваш бюджет и интересы.</p>
+                                <h3>{t("Любые туры")}</h3>
+                                <p>{t("Подберем любой тур под Ваш бюджет и интересы.")}</p>
                             </div>
                         </StyledFeaturesItem>
                     </ScrollAnimation>
                 </StyledFeaturesItems>
-                <MainButton handleClick={handleClick} margin="0 auto" text="Получите консультацию прямо сейчас" />
+                <MainButton handleClick={handleClick} margin="0 auto" text={t("Получите консультацию прямо сейчас")} />
             </Container>
         </StyledFeaturesSection>
     )

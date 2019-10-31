@@ -1,6 +1,7 @@
 import React, { useState, useReducer } from 'react';
 import styled from 'styled-components';
 import ScrollAnimation from 'react-animate-on-scroll';
+import { useTranslation } from 'react-i18next';
 
 import Container from './Container';
 import SectionHeader from './SectionHeader';
@@ -81,7 +82,7 @@ const STyledContactInput = styled.input`
 
     @media screen and (min-width: 601px) and (max-width: 900px) {
         max-width: 40%; 
-       margin: 12px auto;
+        margin: 12px auto;
     }
 
     @media screen and (min-width: 901px) and (max-width: 1200px) {
@@ -105,13 +106,14 @@ const STyledContactButton = styled.button`
     text-align: center;
 
     ::before {
-    content: 'Измените жизнь';
+        content: "${props => props.btnname ? props.btnname : ''}";
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%) skew(15deg);
         color: white;
         font-size: 16px;
+        width: 100%;
     }
 
     ::placeholder {
@@ -154,8 +156,9 @@ const STyledContactButton = styled.button`
     }
 `;
 
-const ContactFormSection = () => {
+const ContactFormSection = (props) => {
 
+    const { t } = useTranslation();
     const [ userInput, setUserInput ] = useReducer(
         (state, newState) => ({...state, ...newState}),
         {
@@ -197,20 +200,20 @@ const ContactFormSection = () => {
         <StyledContactFormSection>
             <Container>
                 <ScrollAnimation animateIn="fadeIn" duration={2} animateOnce={true}>
-                    <SectionHeader text="Ответьте на пару вопросов" color="#2d2d2d" subcolor="#a11a39" />
+                    <SectionHeader text={t("Ответьте на пару вопросов")} color="#2d2d2d" subcolor="#a11a39" />
                 </ScrollAnimation>
                 <ScrollAnimation animateIn="fadeIn" duration={2} delay={300} animateOnce={true}>
                 {!isSent &&
                     (<StyledContactForm onSubmit={handleSubmit}>
-                        <STyledContactInput type="text" name="name" value={userInput.name} onChange={handleInputChange} placeholder="Ваше имя" required />
-                        <STyledContactInput type="text" name="work" value={userInput.work} onChange={handleInputChange} placeholder="Желаемая работа" required />
-                        <STyledContactInput type="text" name="country" value={userInput.country} onChange={handleInputChange} placeholder="Страна" required />
-                        <STyledContactInput type="text" name="phone" value={userInput.phone} onChange={handleInputChange} placeholder="Ваш телефон" required />
-                        <STyledContactButton type="submit">Измените жизнь</STyledContactButton>
+                        <STyledContactInput type="text" name="name" value={userInput.name} onChange={handleInputChange} placeholder={t("Ваше имя")} required />
+                        <STyledContactInput type="text" name="work" value={userInput.work} onChange={handleInputChange} placeholder={t("Желаемая работа")} required />
+                        <STyledContactInput type="text" name="country" value={userInput.country} onChange={handleInputChange} placeholder={t("Страна")} required />
+                        <STyledContactInput type="text" name="phone" value={userInput.phone} onChange={handleInputChange} placeholder={t("Ваш телефон")} required />
+                        <STyledContactButton type="submit" btnname={t("Измените жизнь")}>Измените жизнь</STyledContactButton>
                     </StyledContactForm>)
                 }
                 {isSent && 
-                (<h4>Благодарим за заявку! Наши менеджеры свяжутся с вами.</h4>)}
+                (<h4>{t("Благодарим за заявку! Наши менеджеры свяжутся с вами.")}</h4>)}
                 </ScrollAnimation>
             </Container>
         </StyledContactFormSection>

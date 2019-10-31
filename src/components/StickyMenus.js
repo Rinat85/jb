@@ -93,7 +93,7 @@ const StickyMenus = () => {
                     </a>
                 </li>
                 <li>
-                    <a href=" https://t.me/jbtravel" title="telegram">
+                    <a href="https://t.me/jbtravel" title="telegram">
                         <FontAwesomeIcon icon={faTelegramPlane} color="white" />
                     </a>
                 </li>

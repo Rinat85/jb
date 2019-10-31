@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Map, GoogleApiWrapper, Marker } from 'google-maps-react';
 import styled, { keyframes } from 'styled-components';
 import ScrollAnimation from 'react-animate-on-scroll';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { useTranslation } from 'react-i18next';
 
 import Container from './Container';
 import SectionHeader from './SectionHeader';
@@ -213,9 +214,11 @@ const StyledUpBtn = styled.span`
     }
 `;
 
-export class MapSection extends Component {
+const MapSection = (props) => {
+
+    const { t } = useTranslation();
     
-    displayMarkers = () => {
+    const displayMarkers = () => {
         return <Marker position={{
             lat: 41.321011,
             lng: 69.2604266
@@ -223,40 +226,38 @@ export class MapSection extends Component {
             onClick={() => console.log("You clicked me!")} />
     }
   
-    render() {
-      return (
-        <StyledMapSection id="contacts">
-            <Map
-                google={this.props.google}
-                zoom={15.75}
-                style={mapStyles}
-                initialCenter={{ lat: 41.321011, lng: 69.2604266 }}
-            >
-                {this.displayMarkers()}
-            </Map>
-            <StyledContactsWrap>
-                <Container>
-                    <ScrollAnimation animateIn="fadeInRight" duration={2} animateOnce={true}>
-                        <StyledContacts>
-                            <SectionHeader text="Контакты" color="#333333" subcolor="#a11a39" />
-                            <StyledPhonebar href="callto: +998951422242">+998 (95) 142 22 42</StyledPhonebar>
-                            <StyledAdressbar href="https://www.google.ru/maps/place/iTeam+Web+Media/@41.321011,69.2604266,15z/data=!4m8!1m2!2m1!1siteam!3m4!1s0x0:0x1b2d145a90ce481c!8m2!3d41.3213358!4d69.2579681">ул. Респбуликанская оф 3</StyledAdressbar>
-                            <StyledMailbar href="mailto: info@jbworldcompany.com">info@jbworldcompany.com</StyledMailbar>
-                        </StyledContacts>
-                    </ScrollAnimation>
-                </Container>
-            </StyledContactsWrap>
-            <StyledHamburger>
-                <a href="#!">
-                    <FontAwesomeIcon icon={faBars} color="white" />
-                </a>
-            </StyledHamburger>
-            <StyledUpBtn>
-                <a href="#top" title="наверх">вверх</a>
-            </StyledUpBtn>
-        </StyledMapSection>
-      );
-    }
+    return (
+    <StyledMapSection id="contacts">
+        <Map
+            google={props.google}
+            zoom={15.75}
+            style={mapStyles}
+            initialCenter={{ lat: 41.321011, lng: 69.2604266 }}
+        >
+            {displayMarkers()}
+        </Map>
+        <StyledContactsWrap>
+            <Container>
+                <ScrollAnimation animateIn="fadeInRight" duration={2} animateOnce={true}>
+                    <StyledContacts>
+                        <SectionHeader text={t("контакты")} color="#333333" subcolor="#a11a39" />
+                        <StyledPhonebar href="callto: +998951422242">+998 (95) 142 22 42</StyledPhonebar>
+                        <StyledAdressbar href="https://www.google.ru/maps/place/iTeam+Web+Media/@41.321011,69.2604266,15z/data=!4m8!1m2!2m1!1siteam!3m4!1s0x0:0x1b2d145a90ce481c!8m2!3d41.3213358!4d69.2579681">ул. Респбуликанская оф 3</StyledAdressbar>
+                        <StyledMailbar href="mailto: info@jbworldcompany.com">info@jbworldcompany.com</StyledMailbar>
+                    </StyledContacts>
+                </ScrollAnimation>
+            </Container>
+        </StyledContactsWrap>
+        <StyledHamburger>
+            <a href="#!">
+                <FontAwesomeIcon icon={faBars} color="white" />
+            </a>
+        </StyledHamburger>
+        <StyledUpBtn>
+            <a href="#top" title="наверх">{t("вверх")}</a>
+        </StyledUpBtn>
+    </StyledMapSection>
+    );
 };
 
 export default GoogleApiWrapper({

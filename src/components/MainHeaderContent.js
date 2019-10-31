@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import MainButton from './MainButton';
 import MainHeaderLogo from '../img/main-header-logo.png';
+import { useTranslation } from 'react-i18next';
 
 const StyledHeaderBanner = styled.div`
     display: flex;
@@ -106,15 +107,16 @@ const StyledHeaderBannerText = styled.p`
 const MainHeaderContent = (props) => {
 
     const { handleClick, text } = props;
+    const { t } = useTranslation();
 
     return (
         <StyledHeaderBanner>
             <StyledHeaderBannerLogo />
             <StyledHeaderBannerTitle>
-                Ваш надежный партнер
+                {t("Ваш надежный партнер")}
             </StyledHeaderBannerTitle>
             <StyledHeaderBannerText>
-                Компания JB WORLD COMPANY работает с 2019 года, и за короткий период времени добилась высоких результатов в области трудовой миграции и выездного туризма.Были открыты филиалы компании во всех областях Республики Узбекистан, а также на территории Республик Таджикистан, Киргизстан и Казахстан. Компания тесно сотрудничает с такими организациями как Brand Community, International Job Organization и Harvard Education Center, что позволяет максимально качественно предлагать и выполнять услуги по данным направлениям.Таким успехам компания добилась за счет квалифицированного и опытного персонала, единой целью которого является достижение уважения и доверия среди своих клиентов.
+                {t("текст банера главная главная")}
             </StyledHeaderBannerText>
             <MainButton handleClick={handleClick} text={text} margin="37px auto 78px" />
         </StyledHeaderBanner>

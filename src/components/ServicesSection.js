@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import ScrollAnimation from 'react-animate-on-scroll';
+import { useTranslation } from 'react-i18next';
 
 import Container from './Container';
 import SectionHeader from './SectionHeader';
@@ -162,62 +163,65 @@ const StyledServicesItem = styled.div`
 `;
 
 const ServicesSection = () => {
+
+    const { t } = useTranslation();
+
     return (
         <StyledServicesSection id="services">
             <Container>
                 <ScrollAnimation animateIn="fadeIn" duration={2} animateOnce={true}>
-                    <SectionHeader text="Наши услуги" color="#2d2d2d" subcolor="#a11a39" />
+                    <SectionHeader text={t("наши услуги")} color="#2d2d2d" subcolor="#a11a39" />
                 </ScrollAnimation>
                 <StyledServicesItems>
                     <ScrollAnimation animateIn="fadeIn" duration={2} delay={300} animateOnce={true}>
                         <StyledServicesItem >
                             <img src="../img/services-bg-eu.png" alt="eu"/>
-                            <h3>Работа в европе</h3>
+                            <h3>{t("Работа в европе")}</h3>
                             <ul>
-                                <li><span></span>Работа в Германии  на складах одежды</li>
-                                <li><span></span>Работа для водителей в Чехии</li>
-                                <li><span></span>Работа для электриков в Будапеште</li>
-                                <li><span></span>Работа в Голландии на складе овощей</li>
-                                <li><span></span>Работа в Италии для сварщиков: Mig/Mag, Tig</li>
+                                <li><span></span>{t("Работа в Германии  на складах одежды")}</li>
+                                <li><span></span>{t("Работа для водителей в Чехии")}</li>
+                                <li><span></span>{t("Работа для электриков в Будапеште")}</li>
+                                <li><span></span>{t("Работа в Голландии на складе овощей")}</li>
+                                <li><span></span>{t("Работа в Италии для сварщиков Mig/Mag, Tig")}</li>
                             </ul>
                         </StyledServicesItem>
                     </ScrollAnimation>
                     <ScrollAnimation animateIn="fadeIn" duration={2} delay={300} animateOnce={true}>
                         <StyledServicesItem >
                             <img src="../img/services-bg-us.png" alt="us"/>
-                            <h3>Работа в сша</h3>
+                            <h3>{t("Работа в сша")}</h3>
                             <ul>
-                                <li><span></span>Работа в Нью-йорке  на складах одежды</li>
-                                <li><span></span>Работа для водителей в Техасе</li>
-                                <li><span></span>Работа для электриков в Майми</li>
-                                <li><span></span>Работа в Голивуде на складе овощей</li>
-                                <li><span></span>Работа в Калифорнии для сварщиков: Mig/Mag, Tig</li>
+                                <li><span></span>{t("Работа в Нью-йорке  на складах одежды")}</li>
+                                <li><span></span>{t("Работа для водителей в Техасе")}</li>
+                                <li><span></span>{t("Работа для электриков в Майми")}</li>
+                                <li><span></span>{t("Работа в Голивуде на складе овощей")}</li>
+                                <li><span></span>{t("Работа в Калифорнии для сварщиков Mig/Mag, Tig")}</li>
                             </ul>
                         </StyledServicesItem>
                     </ScrollAnimation>
                     <ScrollAnimation animateIn="fadeIn" duration={2} delay={300} animateOnce={true}>
                         <StyledServicesItem >
                             <img src="../img/services-bg-can.png" alt="can"/>
-                            <h3>Работа в канаде</h3>
+                            <h3>{t("Работа в канаде")}</h3>
                             <ul>
-                                <li><span></span>Работа в Торонто  на складах одежды</li>
-                                <li><span></span>Работа для водителей в Бросбоне</li>
-                                <li><span></span>Работа для электриков в Онтарио</li>
-                                <li><span></span>Работа в Ойханенсбурге на складе овощей</li>
-                                <li><span></span>Работа в Вайоминге для сварщиков: Mig/Mag, Tig</li>
+                                <li><span></span>{t("Работа в Торонто  на складах одежды")}</li>
+                                <li><span></span>{t("Работа для водителей в Бросбоне")}</li>
+                                <li><span></span>{t("Работа для электриков в Онтарио")}</li>
+                                <li><span></span>{t("Работа в Ойханенсбурге на складе овощей")}</li>
+                                <li><span></span>{t("Работа в Вайоминге для сварщиков Mig/Mag, Tig")}</li>
                             </ul>
                         </StyledServicesItem>
                     </ScrollAnimation>
                     <ScrollAnimation animateIn="fadeIn" duration={2} delay={300} animateOnce={true}>
                         <StyledServicesItem >
                             <img src="../img/services-bg-au.png" alt="eu"/>
-                            <h3>Работа в австралии</h3>
+                            <h3>{t("Работа в австралии")}</h3>
                             <ul>
-                                <li><span></span>Работа в Австралии  на складах одежды</li>
-                                <li><span></span>Работа для водителей в Австралии</li>
-                                <li><span></span>Работа для электриков в Австралии</li>
-                                <li><span></span>Работа в Австралии на складе овощей</li>
-                                <li><span></span>Работа в Австралии для сварщиков: Mig/Mag, Tig</li>
+                                <li><span></span>{t("Работа в Австралии  на складах одежды")}</li>
+                                <li><span></span>{t("Работа для водителей в Австралии")}</li>
+                                <li><span></span>{t("Работа для электриков в Австралии")}</li>
+                                <li><span></span>{t("Работа в Австралии на складе овощей")}</li>
+                                <li><span></span>{t("Работа в Австралии для сварщиков Mig/Mag, Tig")}</li>
                             </ul>
                         </StyledServicesItem>
                     </ScrollAnimation>
