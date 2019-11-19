@@ -48,6 +48,11 @@ const StyledNavbarLink = styled.span`
     font-size: 12px;
     text-transform: uppercase;
     color: white;
+    transition: text-shadow 0.3s ease-in-out;
+
+    &:hover {
+        text-shadow: -1px -1px 9px rgba(246,242,242,0.84);
+    }
 
     @media screen and (max-width: 600px) {
         color: #2d2d2d;

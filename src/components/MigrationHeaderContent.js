@@ -100,9 +100,9 @@ const StyledHeaderBannerText = styled.p`
     margin-bottom: 36px;
     padding-right: 45px;
     color: white;
-    font-size: 14px;
+    font-size: 16px;
     font-family: 'GothamPro-Light';
-    line-height: 2em;
+    line-height: 1.5em;
 
     @media screen and (max-width: 600px) {
         width: 70%;

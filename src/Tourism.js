@@ -36,7 +36,7 @@ const Tourism = () => {
             <Header handleClick={handleClick} text={t("получить консультацию")} dataType="tourism" contentType="tourism" />
             <TourismMain handleClick={handleClick} />
             <Footer dataType="tourism" />
-            <StickyMenus />
+            <StickyMenus tourism />
             <MainModal handleClick={handleClick} show={show} />
             <div id="bottom"></div>
         </AppWrapper>

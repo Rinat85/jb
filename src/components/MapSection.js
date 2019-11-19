@@ -220,8 +220,8 @@ const MapSection = (props) => {
     
     const displayMarkers = () => {
         return <Marker position={{
-            lat: 41.321011,
-            lng: 69.2604266
+            lat: 41.362162,
+            lng: 69.285134
         }}
             onClick={() => console.log("You clicked me!")} />
     }
@@ -232,7 +232,7 @@ const MapSection = (props) => {
             google={props.google}
             zoom={15.75}
             style={mapStyles}
-            initialCenter={{ lat: 41.321011, lng: 69.2604266 }}
+            initialCenter={{ lat: 41.362162, lng: 69.285134 }}
         >
             {displayMarkers()}
         </Map>
@@ -242,7 +242,7 @@ const MapSection = (props) => {
                     <StyledContacts>
                         <SectionHeader text={t("контакты")} color="#333333" subcolor="#a11a39" />
                         <StyledPhonebar href="callto: +998951422242">+998 (95) 142 22 42</StyledPhonebar>
-                        <StyledAdressbar href="https://www.google.ru/maps/place/iTeam+Web+Media/@41.321011,69.2604266,15z/data=!4m8!1m2!2m1!1siteam!3m4!1s0x0:0x1b2d145a90ce481c!8m2!3d41.3213358!4d69.2579681">ул. Респбуликанская оф 3</StyledAdressbar>
+                        <StyledAdressbar href="https://www.google.ru/maps/place/iTeam+Web+Media/@41.362162,69.285134,15z/data=!4m8!1m2!2m1!1siteam!3m4!1s0x0:0x1b2d145a90ce481c!8m2!3d41.3213358!4d69.2579681">Юнусабадский район, массив Юнусабад, 2-й квартал, 7</StyledAdressbar>
                         <StyledMailbar href="mailto: info@jbworldcompany.com">info@jbworldcompany.com</StyledMailbar>
                     </StyledContacts>
                 </ScrollAnimation>

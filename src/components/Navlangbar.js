@@ -32,6 +32,11 @@ const StyledPhonebar = styled.a`
     font-size: 16px;
     color: white;
     cursor: pointer;
+    transition: text-shadow 0.3s ease-in-out;
+
+    &:hover {
+        text-shadow: -1px -1px 9px rgba(246,242,242,0.84);
+    }
 
     ::before {
         content: url('../img/phone.png');

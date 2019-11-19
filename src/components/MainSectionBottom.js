@@ -128,7 +128,7 @@ const StyledHeaderBannerText = styled.p`
     margin-left: 60px;
     margin-bottom: 36px;
     color: white;
-    font-size: 14px;
+    font-size: 16px;
     font-family: 'GothamPro-Light';
     line-height: 1.5em;
 

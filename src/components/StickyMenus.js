@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebookF, faInstagram, faTelegramPlane } from '@fortawesome/free-brands-svg-icons';
+import { faInstagram, faTelegramPlane } from '@fortawesome/free-brands-svg-icons';
 import { faComment, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 const StyledSocial = styled.ul`
@@ -78,22 +78,17 @@ const StyledMessage = styled.ul`
   }
 `;
 
-const StickyMenus = () => {
+const StickyMenus = props => {
     return (
         <React.Fragment>
             <StyledSocial>
-                <li>
-                    <a href="https://www.facebook.com/" title="facebook">
-                        <FontAwesomeIcon icon={faFacebookF} color="white" />
-                    </a>
-                </li>
-                <li>
-                    <a href="https://www.instagram.com/jb_world_company/" title="instagram">
+                 <li>
+                    <a href={props.tourism ? "https://www.instagram.com/jb___travel/" : "https://www.instagram.com/jb_world_company/"} title="instagram">
                         <FontAwesomeIcon icon={faInstagram} color="white" />
                     </a>
                 </li>
                 <li>
-                    <a href="https://t.me/jbtravel" title="telegram">
+                    <a href={props.tourism ? "https://t.me/jbtravel" : "https://t.me/jbmigration"} title="telegram">
                         <FontAwesomeIcon icon={faTelegramPlane} color="white" />
                     </a>
                 </li>
